@@ -51,7 +51,7 @@ Breaks:
 
 ### Requirements
 
-- Node.js (version 10 or later)
+- Node.js (version 12 or later)
 - Web Browser
 - Text Editor
 
