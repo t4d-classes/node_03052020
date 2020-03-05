@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const staticContent = (req, res) => {
+const staticContent = (defaultFile) => (req, res) => {
 
-  const indexFileName = path.join(__dirname, '..', 'public', 'index.html');
+  const indexFileName = path.join(
+      __dirname, '..', 'public', defaultFile);
 
   // callback version
   fs.readFile(indexFileName, 'utf8', (err, data) => {

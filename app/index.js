@@ -2,25 +2,33 @@ require('dotenv').config();
 
 const http = require('http');
 
+const Config = require('./services/Config');
+
 const { concatStr } = require('./utils');
 const staticContentMiddleware = require('./middleware/staticContent');
 
-const app = (port) => {
+const app = ({ port, defaultFile }) => {
 
+  const server = http.createServer(
+    staticContentMiddleware(defaultFile));
 
-
-  const callback = () => {
-
-    const msg = concatStr('server started on port: ', port);
-
-    console.log(msg);
-
-  };
-
-  const server = http.createServer(staticContentMiddleware);
-
-  server.listen(port, callback);
+  server.listen(port, () => {
+    console.log(
+      concatStr('server started on port: ', port));
+  });
 
 };
 
-app(process.env.PORT || 3050);
+const configSvc = new Config('./config.json');
+
+configSvc.load((err, config) => {
+
+  if (err) {
+    console.log(err.message);
+    process.exit();
+  }
+
+  app(config);
+
+});
+
