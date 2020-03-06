@@ -4,7 +4,7 @@ GET http://localhost:4200/api/colors HTTP/1.1
 
 ###
 
-GET http://localhost:4200/api/colors/5 HTTP/1.1
+GET http://localhost:4200/api/colors/1 HTTP/1.1
 
 ###
 
