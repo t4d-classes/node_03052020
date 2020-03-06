@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const refreshCars = () => axios.get('' /* set a url here */);
+const refreshCars = () => axios.get('/api/cars');
 
-const deleteCar = (carId) => axios.delete('' /* set a url here */);
+const deleteCar = (carId) => axios.delete('/api/cars/' + encodeURIComponent(carId));
 
 export const CarTable = () => {
 
@@ -12,10 +12,10 @@ export const CarTable = () => {
   useEffect(() => {
 
     // uncomment once the URL is set above
-    // refreshCars
-    //   .then(({ data }) => {
-    //     setCars(data);
-    //   });
+    refreshCars()
+      .then(({ data }) => {
+        setCars(data);
+      });
 
   }, []);
 
@@ -57,11 +57,13 @@ export const CarTable = () => {
       </tr>)}
     </tbody>
     <tfoot>
-      <td colSpan="7">
-        <button type="button" onClick={refreshCars}>
-          Refresh
-        </button>
-      </td>
+      <tr>
+        <td colSpan="7">
+          <button type="button" onClick={() => refreshCars().then(({ data }) => { setCars(data); })}>
+            Refresh
+          </button>
+        </td>
+      </tr>
     </tfoot>
   </table>
 
