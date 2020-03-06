@@ -7,21 +7,22 @@ const staticContent = (defaultFile) => (req, res) => {
       __dirname, '..', 'public', defaultFile);
 
   // callback version
-  fs.readFile(indexFileName, 'utf8', (err, data) => {
+  fs.readFile(indexFileName, 'utf8',
+    (err, data) => {
 
-    if (err) {
+      if (err) {
 
-      res.statusCode = 500;
-      res.end();
+        res.statusCode = 500;
+        res.end();
 
-      return;
-    }
+        return;
+      }
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end(data);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html');
+      res.end(data);
 
-  });
+    });
 
   // // promise version
   // fs.readFile(indexFileName, 'utf8')

@@ -23,7 +23,8 @@
       "ecmaVersion": 2019
     },
     "env": {
-      "node": true
+      "node": true,
+      "es2020": true
     },
     "rules": {
       "semi": [

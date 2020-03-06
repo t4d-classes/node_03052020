@@ -3,12 +3,32 @@ const fs = require('fs');
 class Config {
 
   constructor(configFileName) {
-    this._configFilName = configFileName;
+    this._configFileName = configFileName;
   }
 
   load(callback) {
 
-    fs.readFile(this._configFilName, 'utf8',
+    if (typeof callback !== 'function') {
+
+      return new Promise((resolve, reject) => {
+
+        fs.readFile(this._configFileName, 'utf8',
+        (err, data) => {
+  
+          if (err) {
+            reject(err);
+            return;
+          }
+  
+          resolve(JSON.parse(data));
+  
+        });
+
+      });
+
+    } else {
+
+      fs.readFile(this._configFileName, 'utf8',
       (err, data) => {
 
         if (err) {
@@ -19,6 +39,9 @@ class Config {
         callback(null, JSON.parse(data));
 
       });
+
+    }
+
 
   }
 }
