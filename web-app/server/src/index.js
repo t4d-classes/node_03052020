@@ -35,6 +35,74 @@ app.post('/api/colors', (req, res) => {
 
 });
 
+app.put('/api/colors/:colorId', (req, res) => {
+
+  const colorIdParam = Number(req.params.colorId);
+
+  if (colorIdParam < 1 || colorIdParam !== req.body.id) {
+    res.sendStatus(400);
+    res.end();
+    return;
+  }
+
+  fs.promises.readFile('./db.json')
+    .then(data => {
+
+      const db = JSON.parse(data);
+      const updateColor = {
+        ...req.body,
+        id: colorIdParam,
+      };
+
+      const colorIndex = db.colors.findIndex(c => c.id === colorIdParam);
+      db.colors[colorIndex] = updateColor;
+
+      return fs.promises.writeFile('./db.json', JSON.stringify(db));
+    })
+    .then(() => {
+      res.sendStatus(204);
+      res.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+      res.end();
+    });
+
+});
+
+app.delete('/api/colors/:colorId', (req, res) => {
+
+  const colorIdParam = Number(req.params.colorId);
+
+  if (colorIdParam < 1) {
+    res.sendStatus(400);
+    res.end();
+    return;
+  }
+
+  fs.promises.readFile('./db.json')
+    .then(data => {
+
+      const db = JSON.parse(data);
+
+      const colorIndex = db.colors.findIndex(c => c.id === colorIdParam);
+      db.colors.splice(colorIndex, 1);
+
+      return fs.promises.writeFile('./db.json', JSON.stringify(db));
+    })
+    .then(() => {
+      res.sendStatus(204);
+      res.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+      res.end();
+    });
+
+});
+
 app.get('/api/colors/:colorId', (req, res) => {
 
   fs.readFile('./db.json', (err, data) => {
