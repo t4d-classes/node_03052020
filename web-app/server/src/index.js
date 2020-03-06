@@ -1,15 +1,25 @@
 const express = require('express');
 const proxy = require('express-http-proxy');
+const fs = require('fs');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use('/api/colors', (req, res) => {
+// add a 'body' property to the req object
+app.use('/api', bodyParser.json());
 
-  res.json([
-    { id: 1, name: 'red' },
-    { id: 2, name: 'green' },
-    { id: 3, name: 'blue' },
-  ]);
+app.post('/api/colors', (req, res) => {
+  console.log('write the color to the file', req.body);
+
+  res.json(req.body);
+})
+
+app.get('/api/colors', (req, res) => {
+
+  fs.readFile('./db.json', (err, data) => {
+    const db = JSON.parse(data);
+    res.json(db.colors);
+  });
 
 });
 
