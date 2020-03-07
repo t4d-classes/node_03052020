@@ -9,7 +9,7 @@ const getInitCarForm = () => ({
   price: 0,
 });
 
-const appendCar = (car) => axios.post('/api/cars', car);
+const appendCar = (car) => axios.post(/* set a url here */, car);
 
 export const CarForm = ({ buttonText }) => {
 

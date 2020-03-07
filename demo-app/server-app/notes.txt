@@ -1,0 +1,5 @@
+  "babel": {
+    "plugins": ["@babel/plugin-proposal-nullish-coalescing-operator"]
+  },
+
+    "parser": "babel-eslint",

@@ -1,0 +1,57 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "make": "Ford",
+      "model": "Fusion Hybrid",
+      "year": 2019,
+      "color": "blue",
+      "price": 45000
+    },
+    {
+      "id": 2,
+      "make": "Tesla",
+      "model": "S",
+      "year": 2018,
+      "color": "red",
+      "price": 100000
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "demo",
+      "password": "$2b$10$6Xp9bD3Z0CjLEQjptbrbjO4mZUV.uOZQupF6YCtOrq3lim7mEP7F."
+    },
+    {
+      "id": 2,
+      "username": "demo2",
+      "password": "$2b$10$HQY29fGc/ol3vNbUzKJd3OEa7D/iAKTZTIiXEKAGJq5Tt4/2cVBpm"
+    },
+    {
+      "username": "demo3",
+      "password": "$2b$10$GJ9IkMKI5yqY9UH9UE9NAuqn1Dxb3SgeThAMKvPf7pHVRVRHirMs6",
+      "id": 3
+    },
+    {
+      "username": "demo4",
+      "password": "$2b$10$w0/og6vrp14e2Vj7GMdkKeE/kQ.ldZFb28cBc4PjmTbNNeo9M3fg.",
+      "id": 4
+    },
+    {
+      "username": "demo5",
+      "password": "$2b$10$1J4ETF7q7X9TUFOXV2REDO2eSkHIMo8K75A/sEPY/vcdrbeDHHXCS",
+      "id": 5
+    },
+    {
+      "username": "demo6",
+      "password": "$2b$10$.4i76ZBU1STUQnnFfHicX.scIvF04w29DPdRgV.7eLOS8ngqXChcm",
+      "id": 6
+    },
+    {
+      "username": "demo7",
+      "password": "$2b$10$eDoBrcCE1NANzIro2d.5H.FgKtCYzRRt7Dsjb.pSkkctwP.t63cqW",
+      "id": 7
+    }
+  ]
+}
